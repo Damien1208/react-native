@@ -5,12 +5,14 @@ import TvButton from './components/fetchTvSeries'
 import MoviesButton from './components/fetchMovies'
 import Movies from './components/moviesList'
 import TvSeries from './components/tvSeriesList'
+import SearchInput from './components/searchItem'
 
 
 export default class App extends Component {
   state = {
     moviesList: [],
-    tvSeriesList: []
+    tvSeriesList: [],
+    text: 'Search ...'
   };
 
   fetchMovieHandler = () => {
@@ -44,18 +46,30 @@ export default class App extends Component {
       .catch(err => console.log(err));
   }
 
+  fetchMovieDetail = (text) => {
+    this.state.text = text
+    console.log(this.state.text)
+  }
+
+  clearInputField = () => {
+    this.state.text = '';
+  }
 
 render() {
   return (
     <View style={styles.container}>
-
+      <SearchInput 
+        data={this.state.text} 
+        clearInput={this.clearInputField} 
+        getMovieDetail={this.fetchMovieDetail}/> 
       <MoviesButton getMovieList={this.fetchMovieHandler} />
       <TvButton getTvSeriesList={this.fetchTVHandler} />
-   
+      
       <View>
-        {this.state.moviesList.length > 1 ? <Movies data={this.state.moviesList}/> : 
-          <TvSeries data={this.state.tvSeriesList} 
-        />}
+        {this.state.moviesList.length < 1 ? 
+        <Text></Text> : <Movies data={this.state.moviesList}/> }
+        {this.state.tvSeriesList.length < 1 ? 
+        <Text>''</Text> : <TvSeries data={this.state.tvSeriesList}/> }
       </View>
     </View>
   );

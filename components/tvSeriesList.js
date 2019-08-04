@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   list: {
     height: 90,
     width: 190,
-    marginRight: 228,
+    marginRight: 228
   },
   text: {
       color: 'white',

@@ -17,7 +17,7 @@ const Movies = props => {
                                 <Image source={
                                     { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                                 }
-                                    style={styles.list} key={item.id} /><Text style={styles.text}>{item.title}</Text></View>
+                                    style={styles.list} key={item.id}  /><Text style={styles.text}>{item.title}</Text></View>
                         }
                     />
                     <FlatList
