@@ -6,9 +6,8 @@ const SearchInput = props => {
     return (
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        value={props.data}
+        defaultValue={props.data}
         style={styles.text}
-        onFocus={props.clearInput}
         onChangeText={(text) => props.getMovieDetail(text)}
       />
     );

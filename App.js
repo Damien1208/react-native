@@ -6,13 +6,15 @@ import MoviesButton from './components/fetchMovies'
 import Movies from './components/moviesList'
 import TvSeries from './components/tvSeriesList'
 import SearchInput from './components/searchItem'
+import SearchResults from './components/searchResults'
 
 
 export default class App extends Component {
   state = {
     moviesList: [],
     tvSeriesList: [],
-    text: 'Search ...'
+    text: 'Search a movie...',
+    searchResult: []
   };
 
   fetchMovieHandler = () => {
@@ -47,29 +49,48 @@ export default class App extends Component {
   }
 
   fetchMovieDetail = (text) => {
-    this.state.text = text
-    console.log(this.state.text)
+    this.state.text = text.toString()
+
+    return fetch(`${Process.search.BASE_URL}${Process.API_KEY}&query=${this.state.text}`)
+    .then((res) => res.json())
+    .then((parsedRes) => {
+      const searchResultArray = [];
+      for (const key in parsedRes) {
+        searchResultArray.push(parsedRes[key]);
+      }
+      this.setState({
+        searchResult: searchResultArray[3]
+      });
+    })
+    .catch(err => console.log(err));
   }
 
   clearInputField = () => {
     this.state.text = '';
   }
 
+
 render() {
+  let list;
+
+  if (this.state.searchResult.length) {
+    list = <SearchResults data={this.state.searchResult} />
+  } else if (this.state.moviesList.length) {
+    list = <Movies data={this.state.moviesList}/>
+  } else if (this.state.tvSeriesList.length) {
+    list = <TvSeries data={this.state.tvSeriesList}/> 
+  } 
+
   return (
     <View style={styles.container}>
       <SearchInput 
         data={this.state.text} 
-        clearInput={this.clearInputField} 
         getMovieDetail={this.fetchMovieDetail}/> 
       <MoviesButton getMovieList={this.fetchMovieHandler} />
       <TvButton getTvSeriesList={this.fetchTVHandler} />
       
       <View>
-        {this.state.moviesList.length < 1 ? 
-        <Text></Text> : <Movies data={this.state.moviesList}/> }
-        {this.state.tvSeriesList.length < 1 ? 
-        <Text>''</Text> : <TvSeries data={this.state.tvSeriesList}/> }
+        {list}
       </View>
     </View>
   );
