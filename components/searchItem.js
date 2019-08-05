@@ -9,6 +9,7 @@ const SearchInput = props => {
         defaultValue={props.data}
         style={styles.text}
         onChangeText={(text) => props.getMovieDetail(text)}
+        clearTextOnFocus={true}
       />
     );
 }

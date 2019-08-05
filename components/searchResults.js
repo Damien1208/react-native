@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image, ScrollView } from 'react-native';
 
 const SearchResults = props => {
-console.log('search results', props)
+
   const halfArray = props.data;
   return (
     <View>
-      <Text style={styles.title}>Search Results {props.text}</Text>
+      <Text style={styles.title}>Search results for: {props.text}</Text>
       <ScrollView style={{ maxHeight: 600 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9}}>
           <FlatList
@@ -17,7 +17,7 @@ console.log('search results', props)
                 <Image source={
                   { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                 }
-                  style={styles.list} key={item.id} /><Text style={styles.text}>{item.name}</Text></View>
+                  style={styles.list} key={item.id} /><Text style={styles.text}>{item.title}</Text></View>
             }
           />
           <FlatList
@@ -28,7 +28,7 @@ console.log('search results', props)
                 <Image source={
                   { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                 }
-                  style={styles.list} key={item.id} /><Text style={styles.text}>{item.name}</Text></View>
+                  style={styles.list} key={item.id} /><Text style={styles.text}>{item.title}</Text></View>
             }
           />
         </View>

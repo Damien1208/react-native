@@ -49,7 +49,8 @@ export default class App extends Component {
   }
 
   fetchMovieDetail = (text) => {
-    this.state.text = text.toString()
+    if(text.length === 0) return;
+    this.state.text = text.toString();
 
     return fetch(`${Process.search.BASE_URL}${Process.API_KEY}&query=${this.state.text}`)
     .then((res) => res.json())
@@ -74,7 +75,7 @@ render() {
   let list;
 
   if (this.state.searchResult.length) {
-    list = <SearchResults data={this.state.searchResult} />
+    list = <SearchResults data={this.state.searchResult} text={this.state.text}/>
   } else if (this.state.moviesList.length) {
     list = <Movies data={this.state.moviesList}/>
   } else if (this.state.tvSeriesList.length) {
