@@ -2,14 +2,14 @@ import React from 'react'
 import { TextInput, StyleSheet } from 'react-native'
 
 const SearchInput = props => {
-
+console.log(props)
     return (
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         defaultValue={props.data}
         style={styles.text}
         onChangeText={(text) => props.getMovieDetail(text)}
-        clearTextOnFocus={true}
+        onPress={props.data = ''}
       />
     );
 }

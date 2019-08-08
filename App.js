@@ -61,7 +61,9 @@ export default class App extends Component {
       }
       this.setState({
         searchResult: searchResultArray[3]
-      });
+      })
+      .then(this.state.text.clear());
+      console.log('text', this.state.text)
     })
     .catch(err => console.log(err));
   }
@@ -69,18 +71,20 @@ export default class App extends Component {
   clearInputField = () => {
     this.state.text = '';
   }
-
+  goToDetail = (item) => {
+    console.log('Selected Item :',item);
+ }
 
 render() {
   let list;
 
   if (this.state.searchResult.length) {
-    list = <SearchResults data={this.state.searchResult} text={this.state.text}/>
+    list = <SearchResults data={this.state.searchResult} text={this.state.text} actionOnRow={this.goToDetail}/>
   } else if (this.state.moviesList.length) {
-    list = <Movies data={this.state.moviesList}/>
+    list = <Movies data={this.state.moviesList} actionOnRow={this.goToDetail}/>
   } else if (this.state.tvSeriesList.length) {
-    list = <TvSeries data={this.state.tvSeriesList}/> 
-  } 
+    list = <TvSeries data={this.state.tvSeriesList} actionOnRow={this.goToDetail}/> 
+  } else {<Text>No results</Text>}
 
   return (
     <View style={styles.container}>
