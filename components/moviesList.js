@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
 const Movies = props => {
-    const halfArray = props.data;
+
+    const halfArray = props.navigation.state.params.movies
 
     return (
         <View>
@@ -10,10 +11,10 @@ const Movies = props => {
             <ScrollView style={{ maxHeight: 600 }}>
                 <View style={{ flexDirection: 'row', marginLeft: 10 }}>
                     <FlatList
-                        data={halfArray.slice(0, (props.data.length / 2))}
+                        data={halfArray.slice(0, (props.navigation.state.params.movies.length / 2))}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) =>
-                            <TouchableWithoutFeedback onPress={() => props.actionOnRow(item)}>
+                            <TouchableWithoutFeedback onPress={() => this.props.actionOnRow(item)}>
                                 <View style={{ flex: 1, flexDirection: 'column' }}>
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
@@ -23,10 +24,10 @@ const Movies = props => {
                         }
                     />
                     <FlatList
-                        data={halfArray.slice((props.data.length / 2), (props.data.length - 1))}
+                        data={halfArray.slice((props.navigation.state.params.movies.length / 2), (props.navigation.state.params.movies.length - 1))}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) =>
-                            <TouchableWithoutFeedback onPress={() => props.actionOnRow(item)}>
+                            <TouchableWithoutFeedback onPress={() => this.props.actionOnRow(item)}>
                                 <View style={{ flex: 1, flexDirection: 'column' }}>
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
@@ -40,6 +41,7 @@ const Movies = props => {
         </View>
     );
 
+
 }
 
 const styles = StyleSheet.create({
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
         marginRight: 200
     },
     text: {
-        color: 'white',
+        color: 'black',
         width: '90%',
         marginBottom: 12
     },

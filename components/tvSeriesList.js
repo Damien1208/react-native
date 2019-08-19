@@ -2,14 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
 const TvSeries = props => {
-  const halfArray = props.data;
+
+  const halfArray = props.navigation.state.params.tvSeries;
+
   return (
     <View>
       <Text style={styles.title}>TV series</Text>
       <ScrollView style={{ maxHeight: 600 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9 }}>
           <FlatList
-            data={halfArray.slice(0, (props.data.length / 2))}
+            data={halfArray.slice(0, (props.navigation.state.params.tvSeries.length / 2))}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
               <TouchableWithoutFeedback onPress={() => props.actionOnRow(item)}>
@@ -22,7 +24,7 @@ const TvSeries = props => {
             }
           />
           <FlatList
-            data={halfArray.slice((props.data.length / 2), (props.data.length - 1))}
+            data={halfArray.slice((props.navigation.state.params.tvSeries.length / 2), (props.navigation.state.params.tvSeries.length - 1))}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
               <TouchableWithoutFeedback onPress={() => props.actionOnRow(item)}>
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     marginRight: 228
   },
   text: {
-    color: 'white',
+    color: 'black',
     width: '90%',
     marginBottom: 12
   },
@@ -58,6 +60,5 @@ const styles = StyleSheet.create({
     fontSize: 24
   }
 });
-
 
 export default TvSeries;

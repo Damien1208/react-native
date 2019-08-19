@@ -1,11 +1,18 @@
+import React, { Component } from 'react';
+import { Button } from 'react-native'
 
-import React from 'react'
-import { Button, View} from 'react-native'
 
-const MoviesButton = props => {
-    return (
-        <Button title="See movies" onPress={props.getMovieList} />
-    );
+class MoviesButton extends Component {
+    render() {
+        const { navigate } = this.props.navigation;
+        return (
+            <Button
+                title="go to movies"
+                onPress={() => this.props.navigation.navigate('Movies', { movies: this.state.moviesList })}
+            ></Button>
+        );
+    }
+   
 
 };
 
