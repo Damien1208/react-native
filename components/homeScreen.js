@@ -79,46 +79,24 @@ class HomeScreen extends Component {
         this.state.text = '';
     }
     goToDetail = (item) => {
-        console.log('Selected Item :', item);
+        return item
     }
 
     render() {
-       
-        // const { navigate } = this.props.navigation;
-        // let list;
-
-        // if (this.state.searchResult.length) {
-        //     list = <SearchResults data={this.state.searchResult} text={this.state.text} actionOnRow={this.goToDetail} />
-        // } else if (this.state.moviesList.length) {
-        //     list = <Movies data={this.state.moviesList} actionOnRow={this.goToDetail} />
-        // } else if (this.state.tvSeriesList.length) {
-        //     list = <TvSeries data={this.state.tvSeriesList} actionOnRow={this.goToDetail} />
-        // } else { <Text>No results</Text> }
-
         return (
             <View style={styles.container}>
                 <Button
                     title="go to movies"
-                    onPress={ () => this.props.navigation.navigate('Movies', { movies: this.state.moviesList }) }
+                    onPress={ () => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail  }) }
                 ></Button>
-        
                 <Button
                     title="go to TV shows"
-                    onPress={ () => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList }) }
+                    onPress={ () => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail }) }
                 ></Button>
-
-
                 <SearchInput
                     data={this.state.text}
                     getMovieDetail={this.fetchMovieDetail}
                 />
-
-                {/* <MoviesButton getMovieList={this.fetchMovieHandler} />
-                <TvButton getTvSeriesList={this.fetchTVHandler} /> */}
-
-                {/* <View>
-                    {list}
-                </View> */}
             </View>
         );
     }
