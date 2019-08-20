@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import { Process } from '../process'
 import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults'
@@ -71,7 +71,6 @@ class HomeScreen extends Component {
 
     updateSearch = search => {
         this.setState({ search });
-        console.log(this.state.search)
         this.fetchMovieSearch()
     };
 
@@ -81,11 +80,12 @@ class HomeScreen extends Component {
 
     render() {
         let movieSearch;
-        if(this.state.search.length > 3) {
+        if(this.state.search.length >= 3) {
            movieSearch = <SearchResults 
            data={this.state.searchResult} 
            actionOnRow={this.goToDetail}
            title={this.state.search}
+           navigate={this.props.navigation.navigate}
            />
         }
 

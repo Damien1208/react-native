@@ -1,31 +1,47 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 
 const ItemDetail = props => {
-    console.log('YYYASHHHDHDH', props.navigation.state.params.detail)
+
     let title;
     if (props.navigation.state.params.detail.title) {
-        title = <Text> {props.navigation.state.params.detail.title}</Text>
+        title = <Text style={styles.title}> {props.navigation.state.params.detail.title}</Text>
     } else {
-        title = <Text> {props.navigation.state.params.detail.name}</Text>
+        title = <Text style={styles.title}> {props.navigation.state.params.detail.name}</Text>
     }
 
     return (
         <View>
-            <Image 
-            style={{width: '80%', height: '60%'}}
-            source={
-                { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
-            } />
             {title}
+            <Image
+                style={{ width: '80%', height: '60%' }}
+                source={
+                    { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
+                } />
+            <Text style={styles.text}> Synopsis : </Text>
             <Text>
                 {props.navigation.state.params.detail.overview}
             </Text>
         </View>
-        
-       
+
+
     );
 
 }
+
+const styles = StyleSheet.create({
+
+    text: {
+        color: 'black',
+        width: '90%',
+        marginLeft: 20,
+        fontSize: 20
+    },
+    title: {
+        backgroundColor: 'white',
+        color: 'black',
+        fontSize: 24
+    }
+});
 
 export default ItemDetail;

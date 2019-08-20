@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
+
 const Movies = props => {
 
     const halfArray = props.navigation.state.params.movies

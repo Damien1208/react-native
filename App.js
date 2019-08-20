@@ -5,7 +5,6 @@ import Movies from './components/moviesList'
 import TvSeries from './components/tvSeriesList'
 import ItemDetail from './components/itemDetail'
 
-
 export default class App extends React.Component {
   render() {
     return (
@@ -18,7 +17,7 @@ const AppStackNavigator = createStackNavigator(
     Home: HomeScreen,
     Movies: Movies,
     TvSeries: TvSeries,
-    ItemDetail: ItemDetail
+    ItemDetail: ItemDetail,
   },
   {
     initialRouteName: 'Home'
@@ -26,4 +25,3 @@ const AppStackNavigator = createStackNavigator(
 );
 
 const AppContainer = createAppContainer(AppStackNavigator);
-
