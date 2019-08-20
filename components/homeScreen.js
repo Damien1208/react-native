@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Process } from '../process'
-// import TvButton from './fetchTvSeries'
-// import MoviesButton from './fetchMovies'
-// import Movies from './moviesList'
-// import TvSeries from './tvSeriesList'
-import SearchInput from './searchItem'
+import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults'
 
 class HomeScreen extends Component {
@@ -16,8 +12,8 @@ class HomeScreen extends Component {
     state = {
         moviesList: [],
         tvSeriesList: [],
-        text: 'Search a movie...',
-        searchResult: []
+        searchResult: [],
+        search: ''
     };
 
     componentWillMount() {
@@ -55,11 +51,10 @@ class HomeScreen extends Component {
             .catch(err => console.log(err));
     }
 
-    fetchMovieDetail = (text) => {
-        if (text.length === 0) return;
-        this.state.text = text.toString();
+    fetchMovieSearch = () => {
+        if (this.state.length < 2) return;
 
-        return fetch(`${Process.search.BASE_URL}${Process.API_KEY}&query=${this.state.text}`)
+        return fetch(`${Process.search.BASE_URL}${Process.API_KEY}&query=${this.state.search}`)
             .then((res) => res.json())
             .then((parsedRes) => {
                 const searchResultArray = [];
@@ -69,34 +64,47 @@ class HomeScreen extends Component {
                 this.setState({
                     searchResult: searchResultArray[3]
                 })
-                    .then(this.state.text.clear());
-                console.log('text', this.state.text)
             })
+            .then(this.state.search = '')
             .catch(err => console.log(err));
     }
 
-    clearInputField = () => {
-        this.state.text = '';
-    }
+    updateSearch = search => {
+        this.setState({ search });
+        console.log(this.state.search)
+        this.fetchMovieSearch()
+    };
+
     goToDetail = (item) => {
         return item
     }
 
     render() {
+        let movieSearch;
+        if(this.state.search.length > 3) {
+           movieSearch = <SearchResults 
+           data={this.state.searchResult} 
+           actionOnRow={this.goToDetail}
+           title={this.state.search}
+           />
+        }
+
         return (
             <View style={styles.container}>
                 <Button
                     title="go to movies"
-                    onPress={ () => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail  }) }
+                    onPress={() => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail })}
                 ></Button>
                 <Button
                     title="go to TV shows"
-                    onPress={ () => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail }) }
+                    onPress={() => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail })}
                 ></Button>
-                <SearchInput
-                    data={this.state.text}
-                    getMovieDetail={this.fetchMovieDetail}
+                <SearchBar
+                    placeholder="Search here..."
+                    onChangeText={this.updateSearch}
+                    value={this.state.search}
                 />
+                {movieSearch}
             </View>
         );
     }

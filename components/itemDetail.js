@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
 const ItemDetail = props => {
-    console.log(props.navigation.state.params.detail.poster_path)
+    console.log('YYYASHHHDHDH', props.navigation.state.params.detail)
     let title;
     if (props.navigation.state.params.detail.title) {
         title = <Text> {props.navigation.state.params.detail.title}</Text>
@@ -18,6 +18,9 @@ const ItemDetail = props => {
                 { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
             } />
             {title}
+            <Text>
+                {props.navigation.state.params.detail.overview}
+            </Text>
         </View>
         
        

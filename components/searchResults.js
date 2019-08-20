@@ -2,18 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
 const SearchResults = props => {
-  console.log(props)
+ console.log(props)
   const halfArray = props.data;
   return (
     <View>
-      <Text style={styles.title}>Search results for: {props.text}</Text>
+      <Text style={styles.title}>Search results for: {props.title}</Text>
       <ScrollView style={{ maxHeight: 600 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9 }}>
           <FlatList
             data={halfArray.slice(0, (props.data.length / 2))}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
-              <TouchableWithoutFeedback onPress={() => props.actionOnRow(item)}>
+              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('ItemDetail', {detail: props.actionOnRow(item)} )}>
                 <View style={{ flex: 1, flexDirection: 'column' }}>
                   <Image source={
                     { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }

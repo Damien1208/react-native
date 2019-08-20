@@ -14,7 +14,7 @@ const Movies = props => {
                         data={halfArray.slice(0, (props.navigation.state.params.movies.length / 2))}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) =>
-                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail',{detail: props.navigation.state.params.actionOnRow(item)}) }>
+                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail',{ detail: props.navigation.state.params.actionOnRow(item) } )}>
                                 <View style={{ flex: 1, flexDirection: 'column' }}>
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
@@ -27,7 +27,7 @@ const Movies = props => {
                         data={halfArray.slice((props.navigation.state.params.movies.length / 2), (props.navigation.state.params.movies.length - 1))}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) =>
-                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail',{detail: props.navigation.state.params.actionOnRow(item)}) }>
+                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail',{ detail: props.navigation.state.params.actionOnRow(item) } )}>
                                 <View style={{ flex: 1, flexDirection: 'column' }}>
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
