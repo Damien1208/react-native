@@ -14,7 +14,7 @@ const ItemDetail = props => {
         <View>
             {title}
             <Image
-                style={{ width: '80%', height: '60%' }}
+                style={{ width: '100%', height: 200 }}
                 source={
                     { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
                 } />

@@ -17,7 +17,7 @@ const AppStackNavigator = createStackNavigator(
     Home: HomeScreen,
     Movies: Movies,
     TvSeries: TvSeries,
-    ItemDetail: ItemDetail,
+    ItemDetail: ItemDetail
   },
   {
     initialRouteName: 'Home'
