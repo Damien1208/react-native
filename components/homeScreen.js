@@ -6,7 +6,7 @@ import SearchResults from './searchResults'
 
 class HomeScreen extends Component {
     static navigationOptions = {
-        title: 'California Streamin',
+        header: null
     };
 
     state = {
