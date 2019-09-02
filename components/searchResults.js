@@ -5,7 +5,7 @@ const SearchResults = props => {
 
   const arraySearch = props.data;
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>Search results for: {props.title}</Text>
       <ScrollView style={{ maxHeight: 600 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9 }}>
@@ -23,7 +23,6 @@ const SearchResults = props => {
                     <Text style={styles.text}>{item.title}</Text>
                     <Text style={{color: 'white', fontSize: 18, marginLeft: 20}}>note : {item.vote_average} / 10</Text>
                     </View>
- 
                   </View>
               </TouchableWithoutFeedback>
             }
@@ -51,6 +50,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
     fontSize: 24
+  },
+  container: {
+    backgroundColor: 'black'
   }
 });
 
