@@ -31,7 +31,7 @@ const TvSeries = props => {
 const styles = StyleSheet.create({
 
   list: {
-    height: 90,
+    height: 100,
     width: 190,
     marginRight: 228
   },

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, ImageBackground, Text } from 'react-native';
 import { Process } from '../process'
 import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults'
 
 class HomeScreen extends Component {
     static navigationOptions = {
-        title: 'Home Page',
+        title: 'California Streamin',
     };
 
     state = {
@@ -90,21 +90,25 @@ class HomeScreen extends Component {
         }
 
         return (
+
             <View style={styles.container}>
-                <Button
-                    title="go to movies"
-                    onPress={() => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail })}
-                ></Button>
-                <Button
-                    title="go to TV shows"
-                    onPress={() => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail })}
-                ></Button>
-                <SearchBar
-                    placeholder="Search here..."
-                    onChangeText={this.updateSearch}
-                    value={this.state.search}
-                />
-                {movieSearch}
+                <ImageBackground source={require('../img/homepage.jpeg')} style={{width: '100%', height: '100%'}}>
+                    <Text>Inside</Text>
+                    <SearchBar
+                        placeholder="Search here..."
+                        onChangeText={this.updateSearch}
+                        value={this.state.search}
+                    />
+                    <Button
+                        title="go to movies"
+                        onPress={() => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail })}
+                    ></Button>
+                    <Button
+                        title="go to TV shows"
+                        onPress={() => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail })}
+                    ></Button>
+                    {movieSearch}
+                </ImageBackground>
             </View>
         );
     }
