@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
 
 const ItemDetail = props => {
-console.log(props)
+
     let title;
     if (props.navigation.state.params.detail.title) {
         title = <Text style={styles.title}> {props.navigation.state.params.detail.title}</Text>
