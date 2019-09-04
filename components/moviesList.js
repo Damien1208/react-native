@@ -19,7 +19,7 @@ const Movies = props => {
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                                     }
-                                        style={styles.list} key={item.id} /><Text style={styles.text}>{item.title}</Text></View>
+                                        style={styles.list} key={item.id} /><Text style={styles.text}>{item.name}</Text></View>
                             </TouchableWithoutFeedback>
                         }
                     />
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     text: {
         color: 'black',
         width: '90%',
-        marginBottom: 12
+        marginBottom: 12,
+        fontSize: 17
     },
     title: {
         backgroundColor: 'white',

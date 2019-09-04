@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, ImageBackground, Text } from 'react-native';
-import { Process } from '../process'
+import { Process } from '../process';
 import { SearchBar } from 'react-native-elements';
-import SearchResults from './searchResults'
+import SearchResults from './searchResults';
+import TvSeriesButton from './buttonTvSeries';
+import MoviesButton from './buttonMovies';
 
 class HomeScreen extends Component {
     static navigationOptions = {
@@ -99,14 +101,16 @@ class HomeScreen extends Component {
                         onChangeText={this.updateSearch}
                         value={this.state.search}
                     />
-                    <Button
-                        title="go to movies"
-                        onPress={() => this.props.navigation.navigate('Movies', { movies: this.state.moviesList, actionOnRow: this.goToDetail })}
-                    ></Button>
-                    <Button
-                        title="go to TV shows"
-                        onPress={() => this.props.navigation.navigate('TvSeries', { tvSeries: this.state.tvSeriesList, actionOnRow: this.goToDetail })}
-                    ></Button>
+                    <MoviesButton 
+                        navigate={this.props.navigation.navigate}  
+                        data={this.state.tvSeriesList} 
+                        actionOnRow={this.goToDetail}   
+                    />
+                    <TvSeriesButton 
+                        navigate={this.props.navigation.navigate}  
+                        data={this.state.tvSeriesList} 
+                        actionOnRow={this.goToDetail}   
+                    />
                     {movieSearch}
                 </ImageBackground>
             </View>
