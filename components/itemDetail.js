@@ -10,7 +10,10 @@ const ItemDetail = props => {
         title = <Text style={styles.title}> {props.navigation.state.params.detail.name}</Text>
     }
 
+    let popularity = (props.navigation.state.params.detail.popularity) * 1000;
+
     return (
+        <ScrollView style={{ height: 600 }}>
         <View>
             {title}
             <Image
@@ -18,20 +21,20 @@ const ItemDetail = props => {
                 source={
                     { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
                 } />
-            <ScrollView style={{ maxHeight: 600 }}>
+            
                 <Text style={styles.text}> Synopsis : </Text>
                 <Text style={styles.descritpion}>
                     {props.navigation.state.params.detail.overview}
                 </Text>
-                <Text>{props.navigation.state.params.detail.first_air_date}</Text>
-                <Text>{props.navigation.state.params.detail.origin_country}</Text>
-                <Text>{props.navigation.state.params.detail.original_language}</Text>
-                <Text>{props.navigation.state.params.detail.popularity}</Text>
-                <Text>{props.navigation.state.params.detail.vote_average}</Text>
-            </ScrollView>
+                <Text style={styles.details}>Date of release: {props.navigation.state.params.detail.first_air_date}</Text>
+                <Text style={styles.details}>Country of origin: {props.navigation.state.params.detail.origin_country}</Text>
+                <Text style={styles.details}>Original language: {props.navigation.state.params.detail.original_language}</Text>
+                <Text style={styles.details}>Popularity: {popularity}</Text>
+                <Text style={styles.details}>Vote: {props.navigation.state.params.detail.vote_average} /10</Text>
+           
             
         </View>
-
+     </ScrollView>
 
     );
 
@@ -57,6 +60,11 @@ const styles = StyleSheet.create({
         fontSize: 19,
         textAlign: "justify",
         margin: 15
+    },
+    details: {
+        fontSize: 17,
+        marginLeft: 15,
+        marginBottom: 6
     }
 });
 

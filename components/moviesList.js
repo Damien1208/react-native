@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFe
 
 
 const Movies = props => {
-
+console.log(props)
     return (
         <View>
             <Text style={styles.title}>Movies</Text>
-            <ScrollView style={{ maxHeight: 600 }}>
+            <ScrollView style={{ height: 600 }}>
                 <View style={{ flexDirection: 'row', marginLeft: 10 }}>
                     <FlatList
                         data={props.navigation.state.params.movies}

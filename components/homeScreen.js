@@ -95,22 +95,27 @@ class HomeScreen extends Component {
 
             <View style={styles.container}>
                 <ImageBackground source={require('../img/homepage.jpeg')} style={{width: '100%', height: '100%'}}>
-                    <Text>Inside</Text>
+                <Text style={styles.text}>Myflix</Text>
                     <SearchBar
                         placeholder="Search here..."
                         onChangeText={this.updateSearch}
                         value={this.state.search}
                     />
-                    <MoviesButton 
-                        navigate={this.props.navigation.navigate}  
-                        data={this.state.tvSeriesList} 
-                        actionOnRow={this.goToDetail}   
-                    />
-                    <TvSeriesButton 
-                        navigate={this.props.navigation.navigate}  
-                        data={this.state.tvSeriesList} 
-                        actionOnRow={this.goToDetail}   
-                    />
+                    <View style={styles.button}>
+                        <MoviesButton 
+                            navigate={this.props.navigation.navigate}  
+                            data={this.state.moviesList} 
+                            actionOnRow={this.goToDetail}
+                        />
+                    </View>
+                    <View style={styles.button}>
+                        <TvSeriesButton 
+                            navigate={this.props.navigation.navigate}  
+                            data={this.state.tvSeriesList} 
+                            actionOnRow={this.goToDetail}   
+                        />
+                    </View>
+                    
                     {movieSearch}
                 </ImageBackground>
             </View>
@@ -124,6 +129,20 @@ const styles = StyleSheet.create({
         color: 'white',
         flex: 6,
         flexDirection: 'column'
+    },
+    text: {
+        fontSize: 38,
+        fontFamily: 'verdana',
+        color: 'red',
+        textAlign: 'center',
+        letterSpacing: 4,
+        fontWeight: '500',
+        fontStyle: "italic"
+    },
+    button: {
+        marginTop: 6,
+        marginLeft: 6,
+        marginRight: 6
     }
 });
 
