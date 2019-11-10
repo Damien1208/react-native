@@ -3,5 +3,5 @@
 ## Screenshots
 
 
-![](images/Screenshot_1567632080.png)
+![](images/Screenshot-1567632080.png)
 
