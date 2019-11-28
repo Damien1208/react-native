@@ -3,6 +3,6 @@
 ## Screenshots
 
 
-![sinopsys](images/Screenshot-1567632080.png =100x180)
+![sinopsys](images/Screenshot-1567632080.png)
 _____________________________________________________
 ![tv_show list](images/Screenshot_1567632069.png =100x180)
