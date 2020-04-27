@@ -9,4 +9,4 @@
 
 </div>
 _____________________________________________________
-![tv_show list](images/Screenshot_1567632069.png&s=100px)
+[[images/Screenshot_1567632069.png&s=100px]]
