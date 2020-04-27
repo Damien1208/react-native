@@ -8,5 +8,4 @@
 <img src="images/Screenshot_1564948332.png" width="200" height="300">
 
 </div>
-_____________________________________________________
-[[images/Screenshot_1567632069.png&s=100px]]
+
