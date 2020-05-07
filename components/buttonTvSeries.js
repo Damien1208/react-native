@@ -8,6 +8,7 @@ const TvSeriesButton = props => {
             raised
             type="outline"
             title="go to TV shows"
+            buttonStyle={{width:"80%"}}
             onPress={() => props.navigate('TvSeries', { tvSeries: props.data, actionOnRow: props.actionOnRow})}
         ></Button>
     );

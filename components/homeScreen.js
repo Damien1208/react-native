@@ -102,15 +102,16 @@ class HomeScreen extends Component {
                         onChangeText={this.updateSearch}
                         value={this.state.search}
                     />
-                    <View style={styles.button}>
+                    <View style={styles.menu}>
                         <MoviesButton 
+                            // style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.moviesList} 
                             actionOnRow={this.goToDetail}
                         />
-                    {/* </View>
-                    <View style={styles.button}> */}
-                        <TvSeriesButton 
+                  
+                        <TvSeriesButton
+                            // style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.tvSeriesList} 
                             actionOnRow={this.goToDetail}   
@@ -132,8 +133,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     text: {
+        marginTop: 120,
         fontSize: 38,
-        //fontFamily: 'verdana',
         color: 'red',
         textAlign: 'center',
         letterSpacing: 4,
@@ -141,9 +142,14 @@ const styles = StyleSheet.create({
         fontStyle: "italic"
     },
     button: {
-        // marginTop: 6,
         marginLeft: 6,
         marginRight: 6
+    },
+    menu: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        marginLeft:10
     }
 });
 
