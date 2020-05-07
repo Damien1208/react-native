@@ -3,11 +3,10 @@ import { StyleSheet, Text, View, FlatList, Image, ScrollView, TouchableWithoutFe
 
 
 const Movies = props => {
-console.log(props)
     return (
         <View>
             <Text style={styles.title}>Movies</Text>
-            <ScrollView style={{ height: 600 }}>
+            <ScrollView style={{ height: 500 }}>
                 <View style={{ flexDirection: 'row', marginLeft: 10 }}>
                     <FlatList
                         data={props.navigation.state.params.movies}
@@ -19,7 +18,7 @@ console.log(props)
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                                     }
-                                        style={styles.list} key={item.id} /><Text style={styles.text}>{item.name}</Text></View>
+                                        style={styles.list} key={item.id} /><Text style={styles.text}>{item.title.slice(0, 20)}</Text></View>
                             </TouchableWithoutFeedback>
                         }
                     />

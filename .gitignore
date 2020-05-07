@@ -56,4 +56,5 @@ buck-out/
 *.jsbundle
 
 # API
-process.js
+.env
+gen

@@ -6,7 +6,7 @@ const TvSeries = props => {
   return (
     <View>
       <Text style={styles.title}>TV series</Text>
-      <ScrollView style={{ height: 600 }}>
+      <ScrollView style={{ height: 500 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9 }}>
           <FlatList
             data={props.navigation.state.params.tvSeries}

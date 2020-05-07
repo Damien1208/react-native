@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, ImageBackground, Text } from 'react-native';
-import { Process } from '../process';
 import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults';
 import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
+import { API_KEY } from 'react-native-dotenv'
+
 
 class HomeScreen extends Component {
     static navigationOptions = {
@@ -24,7 +25,7 @@ class HomeScreen extends Component {
     }
 
     fetchMovieHandler = () => {
-        return fetch(`${Process.movie.BASE_URL}${Process.API_KEY}`)
+        return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`)
             .then((res) => res.json())
             .then((parsedRes) => {
                 const moviesArray = [];
@@ -39,7 +40,7 @@ class HomeScreen extends Component {
     }
 
     fetchTVHandler = () => {
-        return fetch(`${Process.tv.BASE_URL}${Process.API_KEY}`)
+        return fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}`)
             .then((res) => res.json())
             .then((parsedRes) => {
                 const tvSeriesArray = [];
@@ -56,7 +57,7 @@ class HomeScreen extends Component {
     fetchMovieSearch = () => {
         if (this.state.length < 2) return;
 
-        return fetch(`${Process.search.BASE_URL}${Process.API_KEY}&query=${this.state.search}`)
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.state.search}`)
             .then((res) => res.json())
             .then((parsedRes) => {
                 const searchResultArray = [];
@@ -94,7 +95,7 @@ class HomeScreen extends Component {
         return (
 
             <View style={styles.container}>
-                <ImageBackground source={require('../img/homepage.jpeg')} style={{width: '100%', height: '100%'}}>
+                {/* <ImageBackground source={require('../img/homepage.jpeg')} style={{width: '100%', height: '100%'}}> */}
                 <Text style={styles.text}>Myflix</Text>
                     <SearchBar
                         placeholder="Search here..."
@@ -107,8 +108,8 @@ class HomeScreen extends Component {
                             data={this.state.moviesList} 
                             actionOnRow={this.goToDetail}
                         />
-                    </View>
-                    <View style={styles.button}>
+                    {/* </View>
+                    <View style={styles.button}> */}
                         <TvSeriesButton 
                             navigate={this.props.navigation.navigate}  
                             data={this.state.tvSeriesList} 
@@ -117,7 +118,7 @@ class HomeScreen extends Component {
                     </View>
                     
                     {movieSearch}
-                </ImageBackground>
+                {/* </ImageBackground> */}
             </View>
         );
     }
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 38,
-        fontFamily: 'verdana',
+        //fontFamily: 'verdana',
         color: 'red',
         textAlign: 'center',
         letterSpacing: 4,
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         fontStyle: "italic"
     },
     button: {
-        marginTop: 6,
+        // marginTop: 6,
         marginLeft: 6,
         marginRight: 6
     }

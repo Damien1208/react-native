@@ -2,7 +2,6 @@ import React from 'react'
 import { TextInput, StyleSheet } from 'react-native'
 
 const SearchInput = props => {
-console.log(props)
     return (
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
