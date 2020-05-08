@@ -171,7 +171,6 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'black',
-        color: 'white',
         flex: 6,
         flexDirection: 'column',
         marginBottom: 0,

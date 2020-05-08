@@ -24,13 +24,21 @@ const ItemDetail = props => {
             
                 <Text style={styles.text}> Synopsis : </Text>
                 <Text style={styles.descritpion}>
-                    {props.navigation.state.params.detail.overview}
+                    {props.navigation.state.params.detail.overview ? props.navigation.state.params.detail.overview : 'Sorry, there is no detail on this movie'}
                 </Text>
-                <Text style={styles.details}>Date of release: {props.navigation.state.params.detail.first_air_date ? props.navigation.state.params.detail.first_air_date : 'n/a'}</Text>
-                <Text style={styles.details}>Country of origin: {props.navigation.state.params.detail.origin_country}</Text>
-                <Text style={styles.details}>Original language: {props.navigation.state.params.detail.original_language}</Text>
-                <Text style={styles.details}>Popularity: {popularity}</Text>
-                <Text style={styles.details}>Vote: {props.navigation.state.params.detail.vote_average} /10</Text>
+                <Text style={styles.details}>Date of release: {
+                    props.navigation.state.params.detail.first_air_date ? props.navigation.state.params.detail.first_air_date : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Country of origin: {
+                    props.navigation.state.params.detail.origin_country ? props.navigation.state.params.detail.origin_country : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Original language: {
+                    props.navigation.state.params.detail.original_language ? props.navigation.state.params.detail.original_language : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Popularity: {popularity ? popularity : 'n/a'}</Text>
+                <Text style={styles.details}>Vote: {
+                    props.navigation.state.params.detail.vote_average ? props.navigation.state.params.detail.vote_average / 10 : 'n/a'
+                    }</Text>
            
             
         </View>
