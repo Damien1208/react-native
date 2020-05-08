@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, ImageBackground, Text } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { StyleSheet, View, Text, Item, Image, FlatList, ScrollView, TouchableWithoutFeedback} from 'react-native';
+import { SearchBar, Card } from 'react-native-elements';
 import SearchResults from './searchResults';
 import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
 import { API_KEY } from 'react-native-dotenv'
+
 
 
 class HomeScreen extends Component {
@@ -104,20 +105,60 @@ class HomeScreen extends Component {
                     />
                     <View style={styles.menu}>
                         <MoviesButton 
-                            // style={styles.button}
+                            style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.moviesList} 
                             actionOnRow={this.goToDetail}
                         />
-                  
+                       
+                       <ScrollView>
+                            <View>
+                                <FlatList
+                                style={{flex: 1}}
+                                horizontal={true}
+                                data={this.state.moviesList}
+                                renderItem={({ item }) => (
+                                    <View style={{flex: 1, flexDirection: 'column'}}>
+                                        <Image source={
+                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                            }
+                                            style={styles.list} key={item.id}></Image>
+                                        <Text style={{color: 'white'}}>{item.title}</Text>
+                                    </View>
+                                )}
+                                keyExtractor={item => item.id.toString()}
+                                ></FlatList>
+                            </View>
+                        </ScrollView>
+
                         <TvSeriesButton
-                            // style={styles.button}
+                            style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.tvSeriesList} 
                             actionOnRow={this.goToDetail}   
                         />
+                        
+                        <ScrollView>
+                            <View style={{flex: 1, flexDirection: 'row'}}>
+                                <FlatList
+                                style={{flex: 1}}
+                                horizontal={true}
+                                data={this.state.tvSeriesList}
+                                renderItem={({ item }) => (
+                                    <View style={{flex: 1, flexDirection: 'column'}}>
+                                        <Image source={
+                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                            }
+                                            style={styles.list} key={item.id}></Image>
+                                        <Text style={{color: 'white'}}>{item.name}</Text>
+                                    </View>
+                                )}
+                                keyExtractor={item => item.id.toString()}
+                                ></FlatList>
+                            </View>
+                        </ScrollView>
+                  
                     </View>
-                    
                     {movieSearch}
                 {/* </ImageBackground> */}
             </View>
@@ -133,7 +174,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     text: {
-        marginTop: 120,
+        marginTop: 80,
         fontSize: 38,
         color: 'red',
         textAlign: 'center',
@@ -143,13 +184,16 @@ const styles = StyleSheet.create({
     },
     button: {
         marginLeft: 6,
-        marginRight: 6
+        marginRight: 6,
+        marginTop: 6
     },
     menu: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        marginLeft:10
+        flex: 5,
+        flexDirection: "column"
+    },
+    list: {
+        height: 100,
+        width: 190,
     }
 });
 

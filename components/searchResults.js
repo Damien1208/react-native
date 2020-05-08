@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'black',
-    marginTop: 6
+    marginTop: 1
   }
 });
 

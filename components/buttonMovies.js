@@ -8,7 +8,7 @@ const  MoviesButton = props => {
         <Button
             raised
             title="go to movies"
-            type="outline"
+            type="clear"
             buttonStyle={{width:"80%"}}
             onPress={() => props.navigate('Movies', { movies: props.data, actionOnRow: props.actionOnRow })}
         ></Button>
