@@ -56,10 +56,9 @@ class HomeScreen extends Component {
             .catch(err => console.log(err));
     }
 
-    fetchMovieSearch = () => {
-        if (this.state.length < 2) return;
-
-        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.state.search}`)
+    fetchMovieSearch = (search) => {
+        if (search.length < 2) return;
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search}`)
             .then((res) => res.json())
             .then((parsedRes) => {
                 const searchResultArray = [];
@@ -76,7 +75,7 @@ class HomeScreen extends Component {
 
     updateSearch = search => {
         this.setState({ search });
-        this.fetchMovieSearch()
+        this.fetchMovieSearch(search)
     };
 
     goToDetail = (item) => {
@@ -104,7 +103,7 @@ class HomeScreen extends Component {
                         cancelIcon
                         lightTheme
                         placeholder="Search..."
-                        onChangeText={this.updateSearch}
+                        onChangeText={(e) => this.updateSearch(e)}
                         value={this.state.search}
                     />
                     <View style={styles.menu}>
@@ -181,7 +180,7 @@ const styles = StyleSheet.create({
     text: {
         marginTop: 45,
         fontSize: 38,
-        color: 'red',
+        color: '#80ffdf',
         textAlign: 'center',
         letterSpacing: 4,
         fontWeight: '500',
@@ -191,7 +190,8 @@ const styles = StyleSheet.create({
     button: {
         marginLeft: 6,
         marginRight: 6,
-        marginTop: 6
+        marginTop: 6,
+        color: "#80ffdf"
     },
     menu: {
         flex: 5,
