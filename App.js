@@ -1,9 +1,10 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import HomeScreen from './components/homeScreen'
-import Movies from './components/moviesList'
-import TvSeries from './components/tvSeriesList'
-import ItemDetail from './components/itemDetail'
+import HomeScreen from './components/homeScreen';
+import Trending from './components/trending';
+import Movies from './components/moviesList';
+import TvSeries from './components/tvSeriesList';
+import ItemDetail from './components/itemDetail';
 
 export default class App extends React.Component {
   render() {
@@ -17,7 +18,8 @@ const AppStackNavigator = createStackNavigator(
     Home: HomeScreen,
     Movies: Movies,
     TvSeries: TvSeries,
-    ItemDetail: ItemDetail
+    ItemDetail: ItemDetail,
+    Trending: Trending
   },
   {
     initialRouteName: 'Home'

@@ -4,9 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults';
 import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
+import TrendingButton from './buttonTrending';
 import { API_KEY } from 'react-native-dotenv';
-import Trending from './trending';
-
 
 
 class HomeScreen extends Component {
@@ -18,12 +17,14 @@ class HomeScreen extends Component {
         moviesList: [],
         tvSeriesList: [],
         searchResult: [],
-        search: ''
+        search: '',
+        trendingList: []
     };
 
     componentWillMount() {
-        this.fetchMovieHandler()
-        this.fetchTVHandler()
+        this.fetchMovieHandler();
+        this.fetchTVHandler();
+        this.fetchTrending();
     }
 
     fetchMovieHandler = () => {
@@ -50,10 +51,25 @@ class HomeScreen extends Component {
                     tvSeriesArray.push(parsedRes[key]);
                 }
                 this.setState({
-                    tvSeriesList: tvSeriesArray[3],
+                    tvSeriesList: tvSeriesArray[3]
                 });
             })
             .catch(err => console.log(err));
+    }
+
+    fetchTrending = () => {
+        return fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`)
+        .then((res) => res.json())
+        .then((parsedRes) => {
+            const trendingArray = [];
+            for (const key in parsedRes) {
+                trendingArray.push(parsedRes[key]);
+            }
+            this.setState({
+                trendingList: trendingArray[1]
+            });
+        })
+        .catch(err => console.log(err));
     }
 
     fetchMovieSearch = (search) => {
@@ -107,6 +123,33 @@ class HomeScreen extends Component {
                         value={this.state.search}
                     />
                     <View style={styles.menu}>
+                        <TrendingButton 
+                            style={styles.button}
+                            navigate={this.props.navigation.navigate}  
+                            data={this.state.trendingList} 
+                            actionOnRow={this.goToDetail}
+                        />
+
+                        <ScrollView>
+                            <View>
+                                <FlatList
+                                style={{flex: 1}}
+                                horizontal={true}
+                                data={this.state.trendingList}
+                                renderItem={({ item }) => (
+                                    <View style={{flex: 1, flexDirection: 'column'}}>
+                                        <Image source={
+                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                            }
+                                            style={styles.list} key={item.id}></Image>
+                                        <Text style={{color: 'white'}}>{!item.title ? item.name : item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
+                                    </View>
+                                )}
+                                keyExtractor={item => item.id.toString()}
+                                ></FlatList>
+                            </View>
+                        </ScrollView>
+
                         <MoviesButton 
                             style={styles.button}
                             navigate={this.props.navigation.navigate}  
@@ -160,7 +203,6 @@ class HomeScreen extends Component {
                                 ></FlatList>
                             </View>
                         </ScrollView>
-                        <Trending />
                     </View>
                     {movieSearch}
             </View>

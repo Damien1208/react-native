@@ -39,8 +39,6 @@ const ItemDetail = props => {
                 <Text style={styles.details}>Vote: {
                     props.navigation.state.params.detail.vote_average ? props.navigation.state.params.detail.vote_average / 10 : 'n/a'
                     }</Text>
-           
-            
         </View>
      </ScrollView>
 
