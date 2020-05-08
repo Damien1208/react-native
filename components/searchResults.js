@@ -6,7 +6,6 @@ const SearchResults = props => {
   const arraySearch = props.data;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search results for: {props.title}</Text>
       <ScrollView style={{ height: 500 }}>
         <View style={{ flexDirection: 'row', marginLeft: 9 }}>
           <FlatList
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'black',
-    marginTop: 1
+    marginTop: 3
   }
 });
 

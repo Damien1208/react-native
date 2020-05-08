@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Item, Image, FlatList, ScrollView, TouchableWithoutFeedback} from 'react-native';
-import { SearchBar, Card } from 'react-native-elements';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, TouchableWithoutFeedback, ImageBackground } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults';
 import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
@@ -96,10 +96,13 @@ class HomeScreen extends Component {
         return (
 
             <View style={styles.container}>
-                {/* <ImageBackground source={require('../img/homepage.jpeg')} style={{width: '100%', height: '100%'}}> */}
                 <Text style={styles.text}>Myflix</Text>
                     <SearchBar
-                        placeholder="Search here..."
+                        platform="android"
+                        round
+                        cancelIcon
+                        lightTheme
+                        placeholder="Search..."
                         onChangeText={this.updateSearch}
                         value={this.state.search}
                     />
@@ -160,7 +163,6 @@ class HomeScreen extends Component {
                   
                     </View>
                     {movieSearch}
-                {/* </ImageBackground> */}
             </View>
         );
     }
@@ -174,13 +176,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     text: {
-        marginTop: 80,
+        marginTop: 45,
         fontSize: 38,
         color: 'red',
         textAlign: 'center',
         letterSpacing: 4,
         fontWeight: '500',
-        fontStyle: "italic"
+        fontStyle: "italic",
+        marginBottom: 15
     },
     button: {
         marginLeft: 6,
