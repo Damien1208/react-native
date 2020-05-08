@@ -4,7 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import SearchResults from './searchResults';
 import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
-import { API_KEY } from 'react-native-dotenv'
+import { API_KEY } from 'react-native-dotenv';
+import Trending from './trending';
 
 
 
@@ -126,7 +127,7 @@ class HomeScreen extends Component {
                                             { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                                             }
                                             style={styles.list} key={item.id}></Image>
-                                        <Text style={{color: 'white'}}>{item.title}</Text>
+                                        <Text style={{color: 'white'}}>{item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
                                     </View>
                                 )}
                                 keyExtractor={item => item.id.toString()}
@@ -153,14 +154,14 @@ class HomeScreen extends Component {
                                             { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
                                             }
                                             style={styles.list} key={item.id}></Image>
-                                        <Text style={{color: 'white'}}>{item.name}</Text>
+                                        <Text style={{color: 'white'}}>{item.name.length > 20 ? item.name.slice(0, 20) + '...' : item.name}</Text>
                                     </View>
                                 )}
                                 keyExtractor={item => item.id.toString()}
                                 ></FlatList>
                             </View>
                         </ScrollView>
-                  
+                        <Trending />
                     </View>
                     {movieSearch}
             </View>
@@ -173,7 +174,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         color: 'white',
         flex: 6,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginBottom: 0,
+        paddingBottom: 3
     },
     text: {
         marginTop: 45,

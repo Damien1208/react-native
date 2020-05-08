@@ -33,7 +33,6 @@ const SearchResults = props => {
 }
 
 const styles = StyleSheet.create({
-
   list: {
     height: 80,
     width: '40%',
