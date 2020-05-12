@@ -2,10 +2,10 @@
 
 ## Screenshots
 <div>
-<img src="img/home_view.png" width="200" height="300">
-<img src="img/search_view.png" width="200" height="300">
-<img src="img/list_view.png" width="200" height="300">
-<img src="img/detail_view.png" width="200" height="300">
+<img src="img/home_view.png" width="170" height="300">
+<img src="img/search_view.png" width="170" height="300">
+<img src="img/list_view.png" width="170" height="300">
+<img src="img/detail_view.png" width="170" height="300">
 
 </div>
 
