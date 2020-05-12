@@ -3,10 +3,9 @@
 ## Screenshots
 <div>
 <img src="img/home_view.png" width="207" height="400">
-<img src="img/search_view.png" width="207" height="400">
-<img src="img/list_view.png" width="207" height="400">
 <img src="img/detail_view.png" width="207" height="400">
-
+<img src="img/list_view.png" width="207" height="400">
+<img src="img/search_view.png" width="207" height="400">
 </div>
 
 
