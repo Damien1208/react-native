@@ -113,7 +113,7 @@ class HomeScreen extends Component {
         return (
 
             <View style={styles.container}>
-                <Text style={styles.text}>Myflix</Text>
+                <Image source={require('../img/myflixfinal.png')} style={{width: '100%', height: 150}} />
                     <SearchBar
                         platform="android"
                         round
@@ -125,7 +125,6 @@ class HomeScreen extends Component {
                     />
                     <View style={styles.menu}>
                         <TrendingButton 
-                            style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.trendingList} 
                             actionOnRow={this.goToDetail}
@@ -154,7 +153,6 @@ class HomeScreen extends Component {
                         </ScrollView>
 
                         <MoviesButton 
-                            style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.moviesList} 
                             actionOnRow={this.goToDetail}
@@ -183,7 +181,6 @@ class HomeScreen extends Component {
                         </ScrollView>
 
                         <TvSeriesButton
-                            style={styles.button}
                             navigate={this.props.navigation.navigate}  
                             data={this.state.tvSeriesList} 
                             actionOnRow={this.goToDetail}   
@@ -234,12 +231,6 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontStyle: "italic",
         marginBottom: 15
-    },
-    button: {
-        marginLeft: 6,
-        marginRight: 6,
-        marginTop: 6,
-        color: "#80ffdf"
     },
     menu: {
         flex: 5,

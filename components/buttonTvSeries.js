@@ -5,9 +5,8 @@ const TvSeriesButton = props => {
     return (
         <Button
             type="clear"
-            title="go to TV shows"
-            color="#80ffdf"
-            buttonStyle={{width:"80%"}}
+            title="go to tv shows"
+            buttonStyle={{width:"40%"}}
             onPress={() => props.navigate('TvSeries', { tvSeries: props.data, actionOnRow: props.actionOnRow})}
         ></Button>
     );

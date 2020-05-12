@@ -18,8 +18,8 @@ const ItemDetail = props => {
             {title}
             <Image
                 style={{ width: '100%', height: 200 }}
-                source={
-                    { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.poster_path}` }
+                source={ props.navigation.state.params.poster_path ? 
+                    { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.poster_path}` } : require('../img/notavailable.png') 
                 } />
             
                 <Text style={styles.text}> Synopsis : </Text>
@@ -35,9 +35,9 @@ const ItemDetail = props => {
                 <Text style={styles.details}>Original language: {
                     props.navigation.state.params.original_language ? props.navigation.state.params.original_language : 'n/a'
                 }</Text>
-                <Text style={styles.details}>Popularity: {popularity ? popularity : 'n/a'}</Text>
+                <Text style={styles.details}>Popularity: {popularity ? Math.round(popularity) : 'n/a'}</Text>
                 <Text style={styles.details}>Vote: {
-                    props.navigation.state.params.vote_average ? props.navigation.state.params.vote_average / 10 : 'n/a'
+                    props.navigation.state.params.vote_average ? (props.navigation.state.params.vote_average).toFixed(2) + " /10": 'n/a'
                     }</Text>
         </View>
      </ScrollView>

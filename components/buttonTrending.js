@@ -4,10 +4,9 @@ import { Button } from 'react-native-elements'
 const  TrendingButton = props => {
     return (
         <Button
-            raised
-            title="go to trending Now"
+            title="go to trending"
             type="clear"
-            buttonStyle={{width:"80%"}}
+            buttonStyle={{width:"40%"}}
             onPress={() => props.navigate('Trending', { trendingMovies: props.data, actionOnRow: props.actionOnRow })}
         ></Button>
     );

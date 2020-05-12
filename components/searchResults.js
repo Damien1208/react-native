@@ -14,8 +14,8 @@ const SearchResults = props => {
             renderItem={({ item }) =>
               <TouchableWithoutFeedback onPress={() => props.navigate('ItemDetail', props.actionOnRow(item) )}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                  <Image source={
-                    { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                  <Image source={ item.poster_path ? 
+                    { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}`} : require('../img/notavailable.png') 
                   }
                     style={styles.list} key={item.id} />
                     <View>
