@@ -7,7 +7,7 @@ const SearchResults = props => {
   return (
     <View style={styles.container}>
       <ScrollView style={{ height: 500 }}>
-        <View style={{ flexDirection: 'row', marginLeft: 9 }}>
+        <View style={{ flexDirection: 'row', marginLeft: 6 }}>
           <FlatList
             data={arraySearch}
             keyExtractor={(item) => item.id.toString()}
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   list: {
     height: 80,
     width: '40%',
-    marginBottom: 12,
+    marginBottom: 12
   },
   text: {
     color: 'white',

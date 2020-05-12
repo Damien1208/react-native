@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 190,
     marginRight: 228,
-    marginLeft: 10
+    marginLeft: 8
   },
   text: {
     color: 'black',

@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     list: {
         height: 100,
         width: 190,
-        marginRight: 200
+        marginRight: 200,
+        marginLeft: 8
     },
     text: {
         color: 'black',
