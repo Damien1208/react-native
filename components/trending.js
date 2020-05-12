@@ -13,7 +13,7 @@ const Trending = props => {
                         numColumns={2}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) =>
-                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail',{ detail: props.navigation.state.params.actionOnRow(item) } )}>
+                        <TouchableWithoutFeedback onPress={() => props.navigation.navigate('ItemDetail', props.navigation.state.params.actionOnRow(item) )}>
                                 <View style={{ flex: 1, flexDirection: 'column', marginBottom: 3 }}>
                                     <Image source={
                                         { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }

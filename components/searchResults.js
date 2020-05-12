@@ -12,7 +12,7 @@ const SearchResults = props => {
             data={arraySearch}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
-              <TouchableWithoutFeedback onPress={() => props.navigate('ItemDetail', { detail: props.actionOnRow(item) })}>
+              <TouchableWithoutFeedback onPress={() => props.navigate('ItemDetail', props.actionOnRow(item) )}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                   <Image source={
                     { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }

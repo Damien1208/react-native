@@ -6,6 +6,7 @@ import TvSeriesButton from './buttonTvSeries';
 import MoviesButton from './buttonMovies';
 import TrendingButton from './buttonTrending';
 import { API_KEY } from 'react-native-dotenv';
+import { CommonActions } from '@react-navigation/native';
 
 
 class HomeScreen extends Component {
@@ -137,13 +138,15 @@ class HomeScreen extends Component {
                                 horizontal={true}
                                 data={this.state.trendingList}
                                 renderItem={({ item }) => (
-                                    <View style={{flex: 1, flexDirection: 'column'}}>
-                                        <Image source={
-                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
-                                            }
-                                            style={styles.list} key={item.id}></Image>
-                                        <Text style={{color: 'white'}}>{!item.title ? item.name : item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
-                                    </View>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.push('ItemDetail', item )} >
+                                        <View style={{flex: 1, flexDirection: 'column'}}>
+                                            <Image source={
+                                                { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                                }
+                                                style={styles.list} key={item.id}></Image>
+                                            <Text style={{color: 'white'}}>{!item.title ? item.name : item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
                                 )}
                                 keyExtractor={item => item.id.toString()}
                                 ></FlatList>
@@ -164,13 +167,15 @@ class HomeScreen extends Component {
                                 horizontal={true}
                                 data={this.state.moviesList}
                                 renderItem={({ item }) => (
-                                    <View style={{flex: 1, flexDirection: 'column'}}>
-                                        <Image source={
-                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
-                                            }
-                                            style={styles.list} key={item.id}></Image>
-                                        <Text style={{color: 'white'}}>{item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
-                                    </View>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.push('ItemDetail', item )}>
+                                        <View style={{flex: 1, flexDirection: 'column'}}>
+                                            <Image source={
+                                                { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                                }
+                                                style={styles.list} key={item.id}></Image>
+                                            <Text style={{color: 'white'}}>{item.title.length > 20 ? item.title.slice(0, 20)+'...' : item.title}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
                                 )}
                                 keyExtractor={item => item.id.toString()}
                                 ></FlatList>
@@ -191,13 +196,15 @@ class HomeScreen extends Component {
                                 horizontal={true}
                                 data={this.state.tvSeriesList}
                                 renderItem={({ item }) => (
-                                    <View style={{flex: 1, flexDirection: 'column'}}>
-                                        <Image source={
-                                            { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
-                                            }
-                                            style={styles.list} key={item.id}></Image>
-                                        <Text style={{color: 'white'}}>{item.name.length > 20 ? item.name.slice(0, 20) + '...' : item.name}</Text>
-                                    </View>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.push('ItemDetail', item )}>
+                                        <View style={{flex: 1, flexDirection: 'column'}}>
+                                            <Image source={
+                                                { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                                                }
+                                                style={styles.list} key={item.id}></Image>
+                                            <Text style={{color: 'white'}}>{item.name.length > 20 ? item.name.slice(0, 20) + '...' : item.name}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
                                 )}
                                 keyExtractor={item => item.id.toString()}
                                 ></FlatList>
