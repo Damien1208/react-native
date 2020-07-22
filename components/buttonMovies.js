@@ -6,9 +6,9 @@ const  MoviesButton = props => {
    
     return (
         <Button
-            raised
             title="go to movies"
-            type="outline"
+            type="clear"
+            buttonStyle={{ width:"40%" }}
             onPress={() => props.navigate('Movies', { movies: props.data, actionOnRow: props.actionOnRow })}
         ></Button>
     );

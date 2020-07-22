@@ -4,13 +4,13 @@ import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
 const ItemDetail = props => {
 
     let title;
-    if (props.navigation.state.params.detail.title) {
-        title = <Text style={styles.title}> {props.navigation.state.params.detail.title}</Text>
+    if (props.navigation.state.params.title) {
+        title = <Text style={styles.title}> {props.navigation.state.params.title}</Text>
     } else {
-        title = <Text style={styles.title}> {props.navigation.state.params.detail.name}</Text>
+        title = <Text style={styles.title}> {props.navigation.state.params.name}</Text>
     }
 
-    let popularity = (props.navigation.state.params.detail.popularity) * 1000;
+    let popularity = (props.navigation.state.params.popularity) * 1000;
 
     return (
         <ScrollView style={{ height: 600 }}>
@@ -18,21 +18,27 @@ const ItemDetail = props => {
             {title}
             <Image
                 style={{ width: '100%', height: 200 }}
-                source={
-                    { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.detail.poster_path}` }
+                source={ props.navigation.state.params.poster_path ? 
+                    { uri: `https://image.tmdb.org/t/p/w200${props.navigation.state.params.poster_path}` } : require('../img/notavailable.png') 
                 } />
             
                 <Text style={styles.text}> Synopsis : </Text>
                 <Text style={styles.descritpion}>
-                    {props.navigation.state.params.detail.overview}
+                    {props.navigation.state.params.overview ? props.navigation.state.params.overview : 'Sorry, there is no detail on this movie'}
                 </Text>
-                <Text style={styles.details}>Date of release: {props.navigation.state.params.detail.first_air_date}</Text>
-                <Text style={styles.details}>Country of origin: {props.navigation.state.params.detail.origin_country}</Text>
-                <Text style={styles.details}>Original language: {props.navigation.state.params.detail.original_language}</Text>
-                <Text style={styles.details}>Popularity: {popularity}</Text>
-                <Text style={styles.details}>Vote: {props.navigation.state.params.detail.vote_average} /10</Text>
-           
-            
+                <Text style={styles.details}>Date of release: {
+                    props.navigation.state.params.first_air_date ? props.navigation.state.params.first_air_date : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Country of origin: {
+                    props.navigation.state.params.origin_country ? props.navigation.state.params.origin_country : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Original language: {
+                    props.navigation.state.params.original_language ? props.navigation.state.params.original_language : 'n/a'
+                }</Text>
+                <Text style={styles.details}>Popularity: {popularity ? Math.round(popularity) : 'n/a'}</Text>
+                <Text style={styles.details}>Vote: {
+                    props.navigation.state.params.vote_average ? (props.navigation.state.params.vote_average).toFixed(2) + " /10": 'n/a'
+                    }</Text>
         </View>
      </ScrollView>
 

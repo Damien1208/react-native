@@ -6,17 +6,16 @@ const SearchResults = props => {
   const arraySearch = props.data;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search results for: {props.title}</Text>
       <ScrollView style={{ height: 500 }}>
-        <View style={{ flexDirection: 'row', marginLeft: 9 }}>
+        <View style={{ flexDirection: 'row', marginLeft: 6 }}>
           <FlatList
             data={arraySearch}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) =>
-              <TouchableWithoutFeedback onPress={() => props.navigate('ItemDetail', { detail: props.actionOnRow(item) })}>
+              <TouchableWithoutFeedback onPress={() => props.navigate('ItemDetail', props.actionOnRow(item) )}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                  <Image source={
-                    { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}` }
+                  <Image source={ item.poster_path ? 
+                    { uri: `https://image.tmdb.org/t/p/w200/${item.poster_path}`} : require('../img/notavailable.png') 
                   }
                     style={styles.list} key={item.id} />
                     <View>
@@ -34,11 +33,10 @@ const SearchResults = props => {
 }
 
 const styles = StyleSheet.create({
-
   list: {
     height: 80,
     width: '40%',
-    marginBottom: 12,
+    marginBottom: 12
   },
   text: {
     color: 'white',
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'black',
-    marginTop: 6
+    marginTop: 3
   }
 });
 
